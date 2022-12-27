@@ -1,10 +1,12 @@
 const express = require('express')
 require('dotenv').config();
-const jwt = require()
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
-const UserModel = require('../Models/User.model');
 
 const userROuter = express.Router()
+const UserModel = require('../Models/User.model');
+
+
 
 userROuter.post('/register',async(req,res)=>{
     const {email,fullname,password,country,currency} = req.body
@@ -23,3 +25,5 @@ userROuter.post('/register',async(req,res)=>{
         return res.status(200).send({message:"Reguistration Successfull",user:user})
     })
 })
+
+module.exports = userROuter
