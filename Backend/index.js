@@ -7,12 +7,13 @@ app.use(express.json())
 app.use(cors())
 
 const connection = require('./config')
+const userRouter = require('./Routes/user.routes')
 
 app.get('/',(req,res)=>{
     res.send('Welcome in Backend of hellobonsai!!')
 })
 
-
+app.use('/user',userRouter)
 
 
 const PORT = process.env.PORT || 8080
