@@ -5,8 +5,9 @@ const bcrypt = require('bcrypt')
 
 const userRouter = express.Router()
 const UserModel = require('../Models/User.model')
+const Userlogger = require('../Middlware/Userlogger')
 
-userRouter.post('/register', async (req, res) => {
+userRouter.post('/register',Userlogger, async (req, res) => {
   const { email, fullname, password, country, currency } = req.body
   await bcrypt.hash(password, 8, async function (err, hash) {
     if (err) {
