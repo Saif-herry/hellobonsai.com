@@ -11,15 +11,16 @@ const userRouter = require('./Routes/user.routes')
 const ClientRouter = require('./Routes/Client.routes')
 const InvoiceRouter = require('./Routes/Invoice.routes')
 const ProjectRouter = require('./Routes/Project.routes')
+const Authentication = require('./Middlware/Authentication')
 
 app.get('/',(req,res)=>{
     res.send('Welcome in Backend of hellobonsai!!')
 })
 
 app.use('/user',userRouter)
-app.use('/client',ClientRouter)
-app.use('/Invoice',InvoiceRouter)
-app.use('/project',ProjectRouter)
+app.use('/client',Authentication,ClientRouter)
+app.use('/Invoice',Authentication,InvoiceRouter)
+app.use('/project',Authentication,ProjectRouter)
 
 const PORT = process.env.PORT || 8080
 
