@@ -39,7 +39,7 @@ userRouter.post('/login', async (req, res) => {
     if (err) {
       return res.status(500).send('Error in Password hash ')
     }
-    if (result) {
+    if (result) { 
       const token = jwt.sign(
         { email: user.email, userId: user._id },'secret')
       return res.status(200).send({ message: 'Login Success', token: token })
